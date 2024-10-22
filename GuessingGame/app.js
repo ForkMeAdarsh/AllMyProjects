@@ -1,5 +1,5 @@
 let maximum = parseInt(prompt("Enter a maximum number of your choice!"));
-console.log(maximum);
+console.log("maximum: ", maximum);
 
 while (!maximum)
 {
@@ -7,9 +7,9 @@ while (!maximum)
 }
 
 let targetNum = Math.floor(Math.random() * maximum) + 1;
-console.log(targetNum);
+console.log("random: ", targetNum);
 
-let guess = parseInt(prompt("Enter your guess!!"));
+let guess = prompt("Enter your guess!! or type 'q' to quit the game."); 
 let attempts = 1;
 
 while (parseInt(guess) !== targetNum)
@@ -18,15 +18,21 @@ while (parseInt(guess) !== targetNum)
     {
         break;
     }
+    guess = parseInt(guess);
     if (guess > targetNum)
     {
         guess = prompt("Too big. Try another guess!");
+        attempts++;
+    }
+    else if (guess < targetNum)
+    {
+        guess = prompt("Too low. Try another guess!");
+        attempts++;
     }
     else
     {
-        guess = prompt("Too low. Try another guess!");
+        guess = prompt("Invalid input. Enter a number or 'q' to exit.");
     }
-    attempts++;
 }
 if (guess === 'q')
 {
